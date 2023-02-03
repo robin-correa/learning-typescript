@@ -49,4 +49,14 @@ account.deposit(21);
 console.log(account.balance);
 console.log(account instanceof Account); // true
 
-// account.id = "123"; // compilation error due to readonly
+// [Index Signatures] - for creating property dynamically
+class SeatAssignment {
+    // A1, A2, ...
+    // A1: string;
+    // A2: string;
+    [seatNumber: string]: string;
+}
+
+let seats = new SeatAssignment();
+seats.A1 = 'Robin';
+seats.A2 = 'Regina';

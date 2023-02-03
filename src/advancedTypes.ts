@@ -61,3 +61,42 @@ function greet(name: string | null | undefined) {
         console.log('Hello!')
     }
 }
+
+// [Optional Chaining]
+
+type Customer = {
+    birthday?: Date
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+
+// Optional property access operator
+console.log(customer?.birthday?.getFullYear());
+
+// Optional element access operator
+// customers?.[0]
+
+// Optional call
+let log: any = null;
+log?.('a');
+
+// [Nullish Coalescing Operator]
+
+let speed: number | null = null;
+let ride = {
+    // Falsy (undefined, null, '', false, 0)
+    // speed: speed !== null ? speed : 30
+    // Simplified:
+    speed: speed ?? 30
+
+}
+
+// [Type Assertions]
+// let phone = document.getElementById('phone') as HTMLInputElement;
+let phone = <HTMLInputElement>document.getElementById('phone');
+
+phone.value

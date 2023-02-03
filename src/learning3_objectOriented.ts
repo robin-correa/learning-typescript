@@ -28,15 +28,25 @@ class Account {
         this._balance += amount;
     }
 
-    getBalance(): number {
+    get balance(): number {
         return this._balance;
     }
+
+    /*
+    set balance(value: number) {
+        if (value < 0) {
+            throw new Error('Invalid value');
+        }
+
+        this._balance = value;
+    }
+    */
 }
 
 // [Creating Objects]
 let account = new Account(1, 'Robin', 0);
 account.deposit(21);
-console.log(account.getBalance());
+console.log(account.balance);
 console.log(account instanceof Account); // true
 
 // account.id = "123"; // compilation error due to readonly

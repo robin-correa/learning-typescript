@@ -134,12 +134,61 @@ function reject(message: string): never {
     throw new Error(message);
 }
 
-reject('...');
-console.log('Hello World'); // Unreachable if 'never' is specified as type
+// reject('...');
+console.log('Hello World'); // Unreachable if 'never' is specified as type and the function is called before this line
 
+// [Exercises]
+
+// #1: Given the data below, define a type alias for representing users.
+
+// letusers = [  {name:'Robin Correa',age:28,occupation:'Software engineer'},  {name:'Regina',age:27}]; //  occupation is optional
+
+type User = {
+    name: string,
+    age: number,
+    occupation?: string
+}
+
+// #2: Birds fly. Fish swim. A Pet can be a Bird or Fish. Use type aliases to represent these
+type Bird = {
+    fly: () => void;
+}
+
+type Fish = {
+    swim: () => void;
+}
+
+type Pet = Bird | Fish;
+
+// #3: Define a type for representing the days of week. Valid values are “Monday”, “Tuesday”, etc.
+type DayOfWeek = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
+
+// #4: Simplify the following code snippets:
 /*
-[Summary]
+Before:
+    let userInfo = getUser();
 
+    console.log(userInfo && userInfo.address ? userInfo.address.street: undefined);
+
+    let x = foo !== null && foo !== undefined ? foo:bar();
+
+After:
+    let userInfo = getUser();
+    console.log(userInfo?.address?.street);
+
+    let x = foo ?? bar();
+*/
+
+// #5 What is the problem in this piece of code?
+/**
+let value:unknown = 'a';
+console.log(value.toUpperCase());
+
+let value:unknown = 'a';
+if (typeofvalue === 'string')
+    console.log(value.toUpperCase());
+
+[Summary]
 - Using a type alias we can create a new name (alias) for a type. We often use type aliases to create custom types.
 
 - With union types, we can allow a variable to take one of many types (eg number | string).

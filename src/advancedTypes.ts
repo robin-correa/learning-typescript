@@ -99,4 +99,22 @@ let ride = {
 // let phone = document.getElementById('phone') as HTMLInputElement;
 let phone = <HTMLInputElement>document.getElementById('phone');
 
-phone.value
+phone.value;
+
+// [The unknown Type]
+function render(document: unknown) {
+    // Narrowing
+    // typeof can only check for primitive types
+    if (typeof document === 'string') {
+        document.toUpperCase();
+    }
+
+    // instanceof is use for checking classess or object
+    // if (document instanceof WordDocument) {
+
+    // }
+
+    // document.move();
+    // document.fly();
+    // document.whateverWeWant();
+}

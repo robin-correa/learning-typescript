@@ -60,3 +60,32 @@ class SeatAssignment {
 let seats = new SeatAssignment();
 seats.A1 = 'Robin';
 seats.A2 = 'Regina';
+
+// [Static Members] - Static properties become part of class and will only have single instance of them in memory.
+class Ride {
+    // passenger
+    // pickupLocation
+    // dropOffLocation
+
+    private static _activeRides: number = 0;
+
+    start() {
+        Ride._activeRides++
+    }
+
+    stop() {
+        Ride._activeRides--;
+    }
+
+    static get activeRides() {
+        return Ride._activeRides;
+    }
+}
+
+let ride1 = new Ride();
+ride1.start();
+
+let ride2 = new Ride();
+ride2.start();
+
+console.log(Ride.activeRides); // 2

@@ -39,7 +39,7 @@ let employee: {
 };
 
 /*
-Summary
+[Summary]
 
 - Since TypeScript is a superset of JavaScript, it includes all the built-in types in JavaScript (eg number, string, boolean, object, etc) as well as additional types (eg any, unknown, never, enum, tuple, etc).
 

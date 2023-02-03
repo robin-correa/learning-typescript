@@ -43,3 +43,12 @@ let textBox: UIWidget = {
     drag: () => { },
     resize: () => { }
 }
+
+// [Literal Types]
+type Quantity = 50 | 100;
+
+// Not refactored: let quantity: 50 | 100 = 100; //100 or 50 only
+// Refactored
+let quantity: Quantity = 100;
+
+type Metric = 'cm' | 'inch';

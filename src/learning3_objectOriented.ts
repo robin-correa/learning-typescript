@@ -12,16 +12,13 @@ Known Programming Paradigms
 // [Creating Classes]
 
 class Account {
-    readonly id: number; // [Readonly modifier]
-    owner: string;
-    private _balance: number;
     nickname?: string; // Optional
 
     // Returns only the instance of this class
-    constructor(id: number, owner: string, balance: number) {
-        this.id = id;
-        this.owner = owner;
-        this._balance = balance;
+    constructor(
+        public readonly id: number,
+        public owner: string,
+        private _balance: number) {
     }
 
     deposit(amount: number): void {

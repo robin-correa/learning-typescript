@@ -34,3 +34,23 @@ class KeyValuePair<TKey, TValue> {
 // Two generic type arguments
 let pair = new KeyValuePair<string, string>('1', 'a');
 console.log(pair.value);
+
+// [Generic Functions]
+
+// stand-alone functions
+function wrapInArray<T>(value: T) {
+    return [value];
+}
+
+// let numbers = wrapInArray('1'); // We can't pass string if function is not generic
+let numbersArray = wrapInArray('1');
+// or
+// let numbersArray = wrapInArray(1);
+
+class ArrayUtils {
+    static wrapInArray<T>(value: T) {
+        return [value];
+    }
+}
+
+let utils = ArrayUtils.wrapInArray(1);

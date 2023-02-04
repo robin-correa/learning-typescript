@@ -80,4 +80,4 @@ interface Product {
 }
 
 let result = fetch<UserAccount>('url');
-console.log(result.data?.username);
+console.log(result); // { data: null, error: null, third: 'url' }

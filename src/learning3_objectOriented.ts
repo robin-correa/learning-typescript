@@ -175,3 +175,70 @@ class Circle extends Shape {
 // let shape = new Shape('red'); // Shape is not a real thing like a circle.
 let shape = new Circle(21, 'red');
 shape.render();
+
+// [Interfaces]
+
+// Example: Calendars
+
+// abstract class Calendar {
+//     constructor(public name: string) { }
+
+//     abstract addEvent(): void;
+//     abstract removeEvent(): void;
+// }
+
+interface Calendar {
+    name: string;
+    addEvent(): void;
+    removeEvent(): void;
+}
+
+interface CloudCalendar extends Calendar {
+    sync(): void;
+}
+
+// Concrete class
+class GoogleCalendar implements Calendar {
+    constructor(public name: string) { }
+
+    addEvent(): void {
+        throw new Error("Method not implemented.");
+    }
+    removeEvent(): void {
+        throw new Error("Method not implemented.");
+    }
+}
+
+/**
+    Interfaces vs Types
+
+    In TypeScript, interfaces and type aliases can be used interchangeably. Both can be used to describe the shape of an object
+
+    Interface
+
+    interface Person {
+        name:string;
+    }
+
+    let person: Person = {
+        name:'Robin',
+    };
+
+    Type
+
+    type Person = {
+        name:string;
+    };
+    
+    let person: Person = {
+        name: 'Mosh',
+    };
+
+    
+    A class can also implement an interface or a type alias: 
+    
+    class MyCalendar implements MyInterface {} 
+    class MyCalendar extends MyType {} 
+    
+    It's more conventional to use an interface in front of the extends keyword, though.
+ */

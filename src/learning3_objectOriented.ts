@@ -100,7 +100,9 @@ class Person {
         return this.firstName + ' ' + this.lastName;
     }
 
-    walk() {
+    // private - can access inside the class BUT cannot access outside (CANNOT be inherited)
+    // protected - can access anywhere in the class (CAN be inherited)
+    protected walk() {
         console.log('Walking..')
     }
 }

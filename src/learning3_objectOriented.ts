@@ -152,3 +152,26 @@ printNames([
     new Teacher('Robin', 'Correa'),
     new Principal('Regina', 'Correa'),
 ]);
+
+// [Abstract Classes and Methods]
+
+abstract class Shape {
+    constructor(public color: string) {
+    }
+
+    abstract render(): void;
+}
+
+class Circle extends Shape {
+    constructor(public radius: number, color: string) {
+        super(color);
+    }
+
+    render(): void {
+        console.log('Rendering a circle');
+    }
+}
+
+// let shape = new Shape('red'); // Shape is not a real thing like a circle.
+let shape = new Circle(21, 'red');
+shape.render();

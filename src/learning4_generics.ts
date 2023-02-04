@@ -81,3 +81,17 @@ interface Product {
 
 let result = fetch<UserAccount>('url');
 console.log(result); // { data: null, error: null, third: 'url' }
+
+// [Generic Constraints]
+
+class PersonClass {
+}
+
+class CustomerClass extends PersonClass {
+}
+
+function echo<T extends PersonClass>(value: T): T {
+    return value;
+}
+
+echo(new CustomerClass);

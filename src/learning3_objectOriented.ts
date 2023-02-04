@@ -97,7 +97,7 @@ class Person {
     }
 
     get fullName() {
-        return this.firstName + '' + this.lastName;
+        return this.firstName + ' ' + this.lastName;
     }
 
     walk() {
@@ -127,4 +127,26 @@ class Teacher extends Person {
 }
 
 let teacher = new Teacher('John', 'Smith');
-console.log(teacher)
+console.log(teacher);
+
+// [Polymorphism] - Person object is taking many different forms and acting polymorphically
+// Enhanced the program without single change in the printNames()
+// Open-Closed Principle (SOLID)
+
+function printNames(people: Person[]) {
+    for (let person of people) {
+        console.log(person.fullName)
+    }
+}
+
+class Principal extends Person {
+    override get fullName() {
+        return 'Principal  ' + super.fullName;
+    }
+}
+
+printNames([
+    new Student(1, 'John', 'Smith'),
+    new Teacher('Robin', 'Correa'),
+    new Principal('Regina', 'Correa'),
+]);

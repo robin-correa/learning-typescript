@@ -54,3 +54,30 @@ class ArrayUtils {
 }
 
 let utils = ArrayUtils.wrapInArray(1);
+
+
+// [Generic Interfaces]
+
+// https://mywebsite.com/users
+// https://mywebsite.com/products
+
+interface Result<T> {
+    data: T | null,
+    error: string | null,
+    third: string | null, // My extra param to solve compilation error
+}
+
+function fetch<T>(url: string): Result<T> {
+    return { data: null, error: null, third: url }
+}
+
+interface UserAccount {
+    username: string;
+}
+
+interface Product {
+    title: string;
+}
+
+let result = fetch<UserAccount>('url');
+console.log(result.data?.username);

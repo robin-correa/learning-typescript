@@ -138,4 +138,44 @@ class UserClass1 {
 
 let userObj1 = new UserClass1('1234');
 // userObj1.password = '123'; // Error / Validation error (Runtime)
-console.log(userObj1.password);
+console.log(userObj1.password); // 1234
+
+// [Parameter Decorators]
+
+type WatchedParameter = {
+    methodName: string,
+    parameterIndex: number
+};
+
+const watchedParameters: WatchedParameter[] = [];
+
+function Watch(target: any, methodName: string, parameterIndex: number) {
+    watchedParameters.push({
+        methodName,
+        parameterIndex
+    });
+
+}
+
+class Vehicle {
+    move(@Watch speed: number) {
+
+    }
+}
+
+console.log(watchedParameters); // [ { methodName: 'move', parameterIndex: 0 } ]
+
+/*
+Summary
+
+- Decorators are often used in frameworks (eg Angular, Vue) to chance and enhance classes and how they behave.
+
+- We can apply decorators on classes, properties, methods, parameters, and accessors (getters and setters).
+
+- A decorator is just a function that gets called by the JavaScript runtime. In that function, we have a chance to modify a class and its members.
+
+- To use decorators, we have to enable the experimentalDecorators setting in tsconfig.
+
+- We can apply more than one decorator to a class or its members. Multiple decorators are applied in the reverse order. 
+
+*/

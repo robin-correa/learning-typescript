@@ -140,3 +140,29 @@ class ProductStore extends Store<Product> {
 // We can restrict it
 // Simply pass it on the child class
 
+// [The keyof Operator]
+
+interface Product1 {
+    name: string;
+    price: number;
+}
+
+class Store1<T> {
+    protected _objects: T[] = [];
+
+    add(obj: T): void {
+        this._objects.push(obj);
+    }
+    // T is Product
+    // keyof T => 'name' | 'price'
+    find(property: keyof T, value: unknown): T | undefined {
+        return this._objects.find(obj => obj[property] === value);
+    }
+}
+
+let store3 = new Store1<Product1>();
+store3.add({ name: 'a', price: 1 });
+store3.find('name', 'a');
+store3.find('price', 1);
+// store3.find('nonExistingProperty', 1); // Compilation error
+

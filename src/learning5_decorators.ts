@@ -44,3 +44,14 @@ function ParentComponent(value: ComponentOptions) {
 
 @ParentComponent({ selector: '#my-profile' })
 class ProfileComponent2 { }
+
+// [Decorator Composition]
+
+function Pipe(constructor: Function) {
+    console.log('Pipe decorator called');
+    constructor.prototype.pipe
+}
+
+@ParentComponent({ selector: '#my-profile' })
+@Pipe
+class ProfileComponent3 { }

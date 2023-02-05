@@ -1,4 +1,6 @@
 /*
+Note: Must comment out "noUnusedParameters": true in tsconfig for this lesson.
+
 class Component {
     insertInDOM() {
 
@@ -55,3 +57,51 @@ function Pipe(constructor: Function) {
 @ParentComponent({ selector: '#my-profile' })
 @Pipe
 class ProfileComponent3 { }
+
+// [Method Decorators]
+/*
+function Log(target: any, methodName: string, descriptor: PropertyDecorator) {
+    const original = descriptor.value as Function;
+    descriptor.value = function (...args: any) {
+        console.log('Before');
+        original.call(this, ...args)
+        console.log('After');
+    }
+}
+class PersonClass1 {
+    @Log
+    say(message: string) {
+        console.log('Person says ' + message);
+    }
+}
+
+let person = new PersonClass1();
+person.say('Hello')
+*/
+
+// [Accessor Decorators]
+
+/*
+function Captalize(target: any, methodName: string, descriptor: PropertyDescriptor) {
+    const original = descriptor.get;
+    descriptor.get = function () {
+        // if (original !== null && original !== undefined) {
+        //     original?.call(this);
+        // }
+        const result = original?.call(this);
+        return (typeof result === 'string') ? result.toUpperCase() : result;
+    }
+}
+
+class PersonClass2 {
+    constructor(public firstName: string, public lastName: string) { }
+
+    @Captalize
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+let person = new PersonClass2('Robin', 'Correa');
+console.log(person.fullName);
+*/

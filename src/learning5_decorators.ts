@@ -105,3 +105,37 @@ class PersonClass2 {
 let person = new PersonClass2('Robin', 'Correa');
 console.log(person.fullName);
 */
+
+// [Property Decorators]
+
+function MinLength(length: number) {
+    return (target: any, propertyName: string) => {
+        let value: string;
+
+        const descriptor: PropertyDescriptor = {
+            get() { return value; },
+            set(newValue: string) {
+                if (newValue.length < length) {
+                    throw new Error(`${propertyName} should be at least ${length} characters long`);
+                }
+
+                value = newValue;
+            }
+        };
+
+        Object.defineProperty(target, propertyName, descriptor);
+    }
+}
+
+class UserClass1 {
+    @MinLength(4)
+    password: string;
+
+    constructor(password: string) {
+        this.password = password;
+    }
+}
+
+let userObj1 = new UserClass1('1234');
+// userObj1.password = '123'; // Error / Validation error (Runtime)
+console.log(userObj1.password);

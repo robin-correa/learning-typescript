@@ -131,7 +131,8 @@ class SearchableStore<T extends { name: string }> extends Store<T> {
 
 class ProductStore extends Store<Product> {
     filterByCategory(category: string): Product[] {
-        return [];
+        category += 'Testing only'; // To solve compilation error only. Was not added
+        return [{ title: "", name: category, price: 1 }]; // To resolve compilation error only. Was []
     }
 }
 
